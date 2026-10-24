@@ -53,8 +53,8 @@ export function BreathingOrb() {
           if (typeof window !== "undefined" && "vibrate" in navigator) {
             try {
               navigator.vibrate(30);
-            } catch {
-              // Ignore haptic failures
+            } catch (_err) {
+              // Haptic vibration optional in restricted contexts
             }
           }
 

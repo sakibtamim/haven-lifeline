@@ -6,7 +6,7 @@ import { PhoneCall, MessageSquare, Globe2, ShieldAlert } from "lucide-react";
 import { emergencyHotlines, getHotlineForCountry, formatTelLink, formatSmsLink } from "@haven/shared";
 
 export function EmergencyBanner() {
-  const [selectedCountry, setSelectedCountry] = React.useState("US");
+  const [selectedCountry, setSelectedCountry] = React.useState("BD");
   const hotline = getHotlineForCountry(selectedCountry);
 
   return (
@@ -48,22 +48,47 @@ export function EmergencyBanner() {
             </select>
           </div>
 
-          {/* 1-Tap Call */}
-          <a href={formatTelLink(hotline.primaryPhone)} className="flex-1 sm:flex-none">
-            <Button variant="crisis" size="sm" className="w-full gap-1.5">
-              <PhoneCall className="w-4 h-4" />
-              <span>Call {hotline.primaryPhone}</span>
-            </Button>
-          </a>
+          {/* If Bangladesh, render direct 999 and Kaan Pete Roi buttons */}
+          {selectedCountry === "BD" ? (
+            <>
+              <a href={formatTelLink("999")} className="flex-1 sm:flex-none">
+                <Button variant="crisis" size="sm" className="w-full gap-1.5">
+                  <PhoneCall className="w-4 h-4" />
+                  <span>Call 999</span>
+                </Button>
+              </a>
+              <a href={formatTelLink("+8801779554391")} className="flex-1 sm:flex-none">
+                <Button variant="sanctuary" size="sm" className="w-full gap-1.5 border-rose-500/30 text-rose-200 hover:text-white">
+                  <PhoneCall className="w-4 h-4 text-teal-400" />
+                  <span>Kaan Pete Roi</span>
+                </Button>
+              </a>
+              <a href={formatTelLink("16263")} className="hidden lg:inline-block">
+                <Button variant="outline" size="sm" className="w-full gap-1.5 text-xs text-slate-300">
+                  <span>Shastho 16263</span>
+                </Button>
+              </a>
+            </>
+          ) : (
+            <>
+              {/* Standard 1-Tap Call for other countries */}
+              <a href={formatTelLink(hotline.primaryPhone)} className="flex-1 sm:flex-none">
+                <Button variant="crisis" size="sm" className="w-full gap-1.5">
+                  <PhoneCall className="w-4 h-4" />
+                  <span>Call {hotline.primaryPhone}</span>
+                </Button>
+              </a>
 
-          {/* 1-Tap Text/SMS if available */}
-          {hotline.smsNumber && (
-            <a href={formatSmsLink(hotline.smsNumber, hotline.smsKeyword)} className="flex-1 sm:flex-none">
-              <Button variant="sanctuary" size="sm" className="w-full gap-1.5 border-rose-500/30 text-rose-200 hover:text-white">
-                <MessageSquare className="w-4 h-4 text-rose-400" />
-                <span>Text {hotline.smsNumber}</span>
-              </Button>
-            </a>
+              {/* 1-Tap Text/SMS if available */}
+              {hotline.smsNumber && (
+                <a href={formatSmsLink(hotline.smsNumber, hotline.smsKeyword)} className="flex-1 sm:flex-none">
+                  <Button variant="sanctuary" size="sm" className="w-full gap-1.5 border-rose-500/30 text-rose-200 hover:text-white">
+                    <MessageSquare className="w-4 h-4 text-rose-400" />
+                    <span>Text {hotline.smsNumber}</span>
+                  </Button>
+                </a>
+              )}
+            </>
           )}
         </div>
       </div>

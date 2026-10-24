@@ -14,14 +14,15 @@ describe("Emergency Hotlines Catalog", () => {
   it("retrieves Bangladesh hotline when BD is requested", () => {
     const bd = getHotlineForCountry("BD");
     expect(bd.countryCode).toBe("BD");
-    expect(bd.name).toContain("Kaan Pete Roi");
-    expect(bd.primaryPhone).toBe("+8801779554391");
+    expect(bd.name).toContain("Bangladesh");
+    expect(bd.primaryPhone).toBe("999");
+    expect(bd.phoneDisplay).toContain("+880");
   });
 
-  it("falls back to US 988 when unknown country is passed", () => {
+  it("falls back to Bangladesh when unknown country is passed", () => {
     const fallback = getHotlineForCountry("ZZ");
-    expect(fallback.countryCode).toBe("US");
-    expect(fallback.primaryPhone).toBe("988");
+    expect(fallback.countryCode).toBe("BD");
+    expect(fallback.primaryPhone).toBe("999");
   });
 
   it("correctly formats tel: URI without spaces or hyphens", () => {

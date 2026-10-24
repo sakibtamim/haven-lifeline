@@ -106,9 +106,15 @@ export function escapeXml(unsafe: string): string {
 export function buildEmergencyEscalationMessage(hotline: Hotline): string {
   const parts: string[] = [
     "I care about your safety and you do not have to carry this alone.",
-    "Please connect right now with someone who can support you through this exact moment. Free, confidential, 24/7 help is available immediately:",
+    "Please connect right now with someone who can support you through this exact moment. Free, confidential help is available immediately:",
     `• ${hotline.name}: Call ${hotline.phoneDisplay}`,
   ];
+
+  if (hotline.countryCode === "BD") {
+    parts.push("• Bangladesh National Emergency: Call 999 (24/7 Toll-Free)");
+    parts.push("• Kaan Pete Roi (কান পেতে রই): Call +880 1779-554391 (Emotional Support)");
+    parts.push("• Shastho Batayan (স্বাস্থ্য বাতায়ন): Call 16263 (24/7 Toll-Free)");
+  }
 
   if (hotline.smsNumber) {
     const textDetails = hotline.smsKeyword
@@ -118,6 +124,10 @@ export function buildEmergencyEscalationMessage(hotline: Hotline): string {
   }
 
   parts.push(`• Direct Call: ${formatTelLink(hotline.primaryPhone)}`);
+
+  if (hotline.countryCode === "BD") {
+    parts.push(`• Direct Call (Kaan Pete Roi): ${formatTelLink("+8801779554391")}`);
+  }
 
   if (hotline.smsNumber) {
     parts.push(`• Direct Text: ${formatSmsLink(hotline.smsNumber, hotline.smsKeyword)}`);

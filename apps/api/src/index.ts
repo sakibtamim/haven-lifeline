@@ -44,7 +44,7 @@ app.route("/api/sms", smsRouter);
 
 // Start server if run as standalone process (non-test environment)
 if (process.env.NODE_ENV !== "test" && !process.env.VITEST) {
-  const port = Number(process.env.PORT) || 3001;
+  const port = Number(process.env.PORT) || 4000;
   serve({ fetch: app.fetch, port }, (info) => {
     // Only log port, zero PII
     console.info(`Haven Crisis API listening on http://localhost:${info.port}`);

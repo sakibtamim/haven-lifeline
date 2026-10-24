@@ -33,7 +33,7 @@ describe("Twilio SMS Webhook Route (POST /api/sms)", () => {
     expect(text).toContain("</Response>");
   });
 
-  it("handles form-urlencoded payload and escalates imminent crisis with 988 in TwiML", async () => {
+  it("handles form-urlencoded payload and escalates imminent crisis with emergency lifelines in TwiML", async () => {
     const params = new URLSearchParams();
     params.append("From", "+15551234567");
     params.append("To", "+15557654321");
@@ -51,8 +51,8 @@ describe("Twilio SMS Webhook Route (POST /api/sms)", () => {
     const text = await res.text();
     expect(text).toContain("<Response>");
     expect(text).toContain("<Message>");
-    expect(text).toContain("988");
-    expect(text).toContain("Suicide &amp; Crisis Lifeline");
+    expect(text).toContain("999");
+    expect(text).toContain("Kaan Pete Roi");
     expect(text).toContain("</Message>");
     expect(text).toContain("</Response>");
   });

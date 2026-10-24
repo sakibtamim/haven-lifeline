@@ -27,7 +27,7 @@ describe("Crisis Safety Classifier (evaluateCrisisSafety)", () => {
       expect(evaluation.distressLevel).toBe("imminent_crisis");
       expect(evaluation.recommendedHotline).toBeDefined();
       expect(evaluation.escalationMessage).toBeDefined();
-      expect(evaluation.escalationMessage).toContain("988");
+      expect(evaluation.escalationMessage).toContain("999");
       expect(safetyEvaluationSchema.safeParse(evaluation).success).toBe(true);
     }
   });
@@ -42,7 +42,7 @@ describe("Crisis Safety Classifier (evaluateCrisisSafety)", () => {
   it("maps emergency hotlines to the requested country code", () => {
     const evalBD = evaluateCrisisSafety("I want to end my life", "BD");
     expect(evalBD.recommendedHotline?.countryCode).toBe("BD");
-    expect(evalBD.recommendedHotline?.name).toContain("Kaan Pete Roi");
+    expect(evalBD.recommendedHotline?.name).toContain("Bangladesh");
     expect(evalBD.escalationMessage).toContain("+880");
 
     const evalCA = evaluateCrisisSafety("I want to die", "CA");
@@ -58,7 +58,7 @@ describe("Crisis Safety Classifier (evaluateCrisisSafety)", () => {
     expect(evalAU.recommendedHotline?.primaryPhone).toBe("131114");
 
     const evalFallback = evaluateCrisisSafety("I want to die", "UNKNOWN");
-    expect(evalFallback.recommendedHotline?.countryCode).toBe("US");
+    expect(evalFallback.recommendedHotline?.countryCode).toBe("BD");
   });
 
   it("classifies severe hopelessness and despair without active suicidal intent", () => {

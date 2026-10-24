@@ -2,6 +2,16 @@ import { type Hotline } from "./schemas";
 
 export const emergencyHotlines: readonly Hotline[] = [
   {
+    countryCode: "BD",
+    countryName: "Bangladesh",
+    name: "Bangladesh National Emergency (999) & Kaan Pete Roi (কান পেতে রই)",
+    primaryPhone: "999",
+    phoneDisplay: "999 (Emergency) / +880 1779-554391 (Kaan Pete Roi)",
+    availableHours: "24/7 Toll-Free (Emergency: 999, Health: 16263, Kaan Pete Roi: 3 PM - 3 AM)",
+    isEmergency: true,
+    notes: "Bangladesh Emergency: 999; Shastho Batayan: 16263; Kaan Pete Roi: +880 1779-554391; Women & Child Helpline: 109",
+  },
+  {
     countryCode: "US",
     countryName: "United States",
     name: "988 Suicide & Crisis Lifeline",
@@ -36,16 +46,6 @@ export const emergencyHotlines: readonly Hotline[] = [
     isEmergency: true,
   },
   {
-    countryCode: "BD",
-    countryName: "Bangladesh",
-    name: "Kaan Pete Roi (Emotional Support Helpline)",
-    primaryPhone: "+8801779554391",
-    phoneDisplay: "+880 1779-554391",
-    availableHours: "3 PM - 3 AM Daily (Bengali / English)",
-    isEmergency: true,
-    notes: "First emotional support helpline in Bangladesh.",
-  },
-  {
     countryCode: "AU",
     countryName: "Australia",
     name: "Lifeline Australia",
@@ -55,6 +55,55 @@ export const emergencyHotlines: readonly Hotline[] = [
     smsNumber: "0477131114",
     availableHours: "24/7 Free Service",
     isEmergency: true,
+  },
+] as const;
+
+export interface BangladeshService {
+  name: string;
+  nameBn: string;
+  phone: string;
+  phoneDisplay: string;
+  category: "emergency" | "health" | "emotional" | "helpline";
+  hours: string;
+  description: string;
+}
+
+export const bangladeshHotlines: readonly BangladeshService[] = [
+  {
+    name: "National Emergency Service",
+    nameBn: "জাতীয় জরুরি সেবা",
+    phone: "999",
+    phoneDisplay: "999",
+    category: "emergency",
+    hours: "24/7 Toll-Free",
+    description: "Immediate police, ambulance, and fire rescue across Bangladesh.",
+  },
+  {
+    name: "Kaan Pete Roi",
+    nameBn: "কান পেতে রই",
+    phone: "+8801779554391",
+    phoneDisplay: "+880 1779-554391",
+    category: "emotional",
+    hours: "3 PM - 3 AM Daily",
+    description: "Bangladesh's premier emotional support & suicide prevention helpline.",
+  },
+  {
+    name: "Shastho Batayan",
+    nameBn: "স্বাস্থ্য বাতায়ন",
+    phone: "16263",
+    phoneDisplay: "16263",
+    category: "health",
+    hours: "24/7 Toll-Free",
+    description: "Ministry of Health 24/7 mental health and medical counseling.",
+  },
+  {
+    name: "National Helpline for Women & Children",
+    nameBn: "নারী ও শিশু নির্যাতন প্রতিরোধে জাতীয় হেল্পলাইন",
+    phone: "109",
+    phoneDisplay: "109",
+    category: "helpline",
+    hours: "24/7 Toll-Free",
+    description: "Legal, medical, and psychological emergency support.",
   },
 ] as const;
 
