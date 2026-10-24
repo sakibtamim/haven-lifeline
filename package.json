@@ -1,0 +1,33 @@
+{
+  "name": "haven-platform-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm --filter @haven/web dev",
+    "dev:api": "pnpm --filter @haven/api dev",
+    "dev:all": "pnpm --parallel --filter @haven/web --filter @haven/api dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r --if-present lint",
+    "typecheck": "pnpm -r --parallel typecheck",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "db:generate": "pnpm --filter @haven/db db:generate",
+    "db:migrate": "pnpm --filter @haven/db db:migrate",
+    "db:studio": "pnpm --filter @haven/db db:studio",
+    "test:full": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.9",
+    "cross-env": "^10.1.0",
+    "turbo": "^2.4.4",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.7"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.15.9"
+}

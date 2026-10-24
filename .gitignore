@@ -1,0 +1,39 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build outputs
+.next
+dist
+build
+out
+.turbo
+
+# Environment & Secrets
+.env
+.env.local
+.env.*.local
+*.pem
+
+# Testing & Coverage
+coverage
+playwright-report
+test-results
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# System & IDE
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.idea
+.vscode
+
+# Antigravity & Agent Bridge
+.agents/artifacts
