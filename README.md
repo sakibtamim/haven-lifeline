@@ -136,7 +136,7 @@ pnpm dev:all
 The web sanctuary will be available at:
 👉 **`http://localhost:3000`**  
 The low-latency API will be available at:
-👉 **`http://localhost:3001`** (Health check: `http://localhost:3001/health`)
+👉 **`http://localhost:4000`** (Health check: `http://localhost:4000/health`)
 
 ---
 
@@ -161,14 +161,14 @@ pnpm build
 
 If you or someone you know is in immediate crisis, support is available 24/7/365:
 
-| Region | Service | Call | Text / SMS | Web |
-| :--- | :--- | :--- | :--- | :--- |
-| **United States & Canada** | Suicide & Crisis Lifeline | **988** | Text **988** | [988lifeline.org](https://988lifeline.org) |
-| **United States & Canada** | Crisis Text Line | — | Text **HOME** to **741741** | [crisistextline.org](https://www.crisistextline.org) |
-| **United Kingdom** | Samaritans / NHS 111 | **111** or **116 123** | Text **SHOUT** to **85258** | [samaritans.org](https://www.samaritans.org) |
-| **Bangladesh** | Kaan Pete Roi (কান পেতে রই) | **+880 1779-554391** | — | [kaanpeteroi.org](https://kaanpeteroi.org) |
-| **Australia** | Lifeline Australia | **13 11 14** | Text **0477 13 11 14** | [lifeline.org.au](https://www.lifeline.org.au) |
-| **International** | Befrienders Worldwide / IASP | Find local | — | [befrienders.org](https://www.befrienders.org) |
+| Region | Service | Call | Text / SMS |
+| :--- | :--- | :--- | :--- |
+| **United States & Canada** | Suicide & Crisis Lifeline | **988** | Text **988** |
+| **United States & Canada** | Crisis Text Line | — | Text **HOME** to **741741** |
+| **United Kingdom** | Samaritans / NHS 111 | **111** or **116 123** | Text **SHOUT** to **85258** |
+| **Bangladesh** | Kaan Pete Roi (কান পেতে রই) | **+880 1779-554391** | — |
+| **Australia** | Lifeline Australia | **13 11 14** | Text **0477 13 11 14** |
+| **International** | Local Emergency Services | **112** / **911** / **999** | — |
 
 ---
 
