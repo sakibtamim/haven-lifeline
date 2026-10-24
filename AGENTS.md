@@ -43,3 +43,17 @@ Welcome to **Project Haven (Haven Crisis Platform)**. These operational rules go
    - `@haven/db` (`packages/db`): Drizzle ORM client, schemas, and migrations.
 2. **Security & Shell Attack Immunity**:
    - Zero `child_process.exec`, zero shell invocations, and zero PHP dependencies anywhere in the project.
+
+---
+
+## 4. Git Branching, Commit Discipline & Branch Protection (Sunshine Standard)
+
+1. **Absolute Prohibition on Direct Commits to Default / Protected Branches (`main`, `develop`)**:
+   - Before making any commit, verify the current branch via `git branch --show-current`.
+   - Direct commits to `develop` or `main` are strictly prohibited.
+   - All feature development, bug fixes, and refactoring must occur on short-running domain/working branches:
+     - Domain format: `<username>/<domain>` (e.g., `sakib/web`, `sakib/api`, `sakib/core`)
+     - Or issue/feature format: `feat/<issue-slug>`, `fix/<issue-slug>`.
+2. **Branch Convergence & Landing Gate**:
+   - Working branches must be pushed to remote (`git push origin <branch>`).
+   - Merging into `develop` or `main` strictly requires Pull Request review or explicit operator authorization via fast-forward (`git merge --ff-only`). Autonomous merges to default branches are banned.
