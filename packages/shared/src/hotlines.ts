@@ -1,4 +1,4 @@
-import { type Hotline } from "./schemas.js";
+import { type Hotline } from "./schemas";
 
 export const emergencyHotlines: readonly Hotline[] = [
   {

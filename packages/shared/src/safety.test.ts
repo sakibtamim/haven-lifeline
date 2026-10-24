@@ -5,8 +5,8 @@ import {
   buildTwimlMessage,
   generateDeEscalationResponse,
   escapeXml,
-} from "./safety.js";
-import { safetyEvaluationSchema } from "./schemas.js";
+} from "./safety";
+import { safetyEvaluationSchema } from "./schemas";
 
 describe("Crisis Safety Classifier (evaluateCrisisSafety)", () => {
   it("detects explicit suicide intent as imminent crisis", () => {

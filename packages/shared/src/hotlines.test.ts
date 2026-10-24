@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { emergencyHotlines, getHotlineForCountry, formatTelLink, formatSmsLink } from "./hotlines.js";
-import { hotlineSchema } from "./schemas.js";
+import { emergencyHotlines, getHotlineForCountry, formatTelLink, formatSmsLink } from "./hotlines";
+import { hotlineSchema } from "./schemas";
 
 describe("Emergency Hotlines Catalog", () => {
   it("validates all hotlines against Zod schema", () => {

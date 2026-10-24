@@ -2,12 +2,12 @@ import {
   type SafetyEvaluation,
   type DistressLevel,
   type Hotline,
-} from "./schemas.js";
+} from "./schemas";
 import {
   getHotlineForCountry,
   formatTelLink,
   formatSmsLink,
-} from "./hotlines.js";
+} from "./hotlines";
 
 // Regex patterns for detecting imminent suicide ideation, intent, or self-harm
 const IMMINENT_PATTERNS: readonly RegExp[] = [

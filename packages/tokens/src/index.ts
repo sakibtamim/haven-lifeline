@@ -1,4 +1,4 @@
-export * from "./colors.js";
+export * from "./colors";
 
 export const breathingRhythms = {
   box: {

@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  transpilePackages: ["@haven/shared", "@haven/tokens"],
   // Security headers to immunize against clickjacking & XSS
   headers: async () => [
     {
