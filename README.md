@@ -157,18 +157,18 @@ pnpm build
 
 ---
 
-## 7. Emergency Hotline Directory
+## 7. Emergency Hotline Directory (Bangladesh Primary)
 
 If you or someone you know is in immediate crisis, support is available 24/7/365:
 
-| Region | Service | Call | Text / SMS |
+| Service | Region | Dial / Call | Details |
 | :--- | :--- | :--- | :--- |
-| **United States & Canada** | Suicide & Crisis Lifeline | **988** | Text **988** |
-| **United States & Canada** | Crisis Text Line | — | Text **HOME** to **741741** |
-| **United Kingdom** | Samaritans / NHS 111 | **111** or **116 123** | Text **SHOUT** to **85258** |
-| **Bangladesh** | Kaan Pete Roi (কান পেতে রই) | **+880 1779-554391** | — |
-| **Australia** | Lifeline Australia | **13 11 14** | Text **0477 13 11 14** |
-| **International** | Local Emergency Services | **112** / **911** / **999** | — |
+| **National Emergency Service** | **Bangladesh (BD)** | **999** | Police, Ambulance, Fire (24/7 Toll-Free) |
+| **Kaan Pete Roi (কান পেতে রই)** | **Bangladesh (BD)** | **+880 1779-554391** | Emotional Support & Suicide Prevention |
+| **Shastho Batayan (স্বাস্থ্য বাতায়ন)** | **Bangladesh (BD)** | **16263** | 24/7 National Health & Counseling (DGHS) |
+| **National Women & Child Helpline** | **Bangladesh (BD)** | **109** | Violence & Crisis Support (24/7 Toll-Free) |
+| **Suicide & Crisis Lifeline** | US / Canada | **988** (Call or Text) | Free & Confidential 24/7 |
+| **Crisis Text Line** | US / Canada | Text **HOME** to **741741** | 24/7 Crisis Support via SMS |
 
 ---
 
