@@ -26,7 +26,7 @@ export function triggerQuickExit() {
   }
 
   // Use replace to strip Haven from browser history stack
-  window.location.replace("https://weather.com");
+  window.location.replace("https://www.google.com");
 }
 
 export function QuickExit({ variant = "both", className }: QuickExitProps) {
