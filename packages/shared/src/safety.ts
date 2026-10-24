@@ -11,11 +11,18 @@ import {
 
 // Regex patterns for detecting imminent suicide ideation, intent, or self-harm
 const IMMINENT_PATTERNS: readonly RegExp[] = [
+  /\bsuicid(e|al|ing|es)?\b/i,
   /\bkill\s+myself\b/i,
   /\bend\s+my\s+life\b/i,
   /\bwant\s+to\s+die\b/i,
+  /\bwanna\s+die\b/i,
+  /\bfeel\s+like\s+dying\b/i,
   /\bcommit\s+suicide\b/i,
   /\btake\s+my\s+own\s+life\b/i,
+  /\bthinking\s+(about|of)\s+(suicide|dying|killing\s+myself|ending\s+it)\b/i,
+  /\b(want|wanna|plan|planning)\s+(to\s+)?(suicide|die|kill\s+myself)\b/i,
+  /\bhurt(ing)?\s+myself\b/i,
+  /\bself[-\s]?harm\b/i,
   /\bhang\s+(myself|myself\s+with)\b/i,
   /\bhanging\s+myself\b/i,
   /\bslit\s+my\s+wrists?\b/i,
@@ -33,6 +40,14 @@ const IMMINENT_PATTERNS: readonly RegExp[] = [
   /\bend\s+it\s+all\b/i,
   /\bready\s+to\s+die\b/i,
   /\bplanning\s+to\s+die\b/i,
+  // Bangla crisis expressions (বাংলা)
+  /আত্মহত্যা/i,
+  /মরতে\s*চাই/i,
+  /মরে\s*যেতে\s*চাই/i,
+  /বাঁচতে\s*চাই\s*না/i,
+  /জীবন\s*শেষ/i,
+  /গলায়\s*দড়ি/i,
+  /নিজেকে\s*শেষ/i,
 ];
 
 // Patterns for lethal means detection
@@ -148,20 +163,52 @@ export function buildTwimlMessage(message: string): string {
 }
 
 /**
- * Generates an empathetic, trauma-informed de-escalation response based on distress level.
+ * Generates an empathetic, trauma-informed de-escalation response based on distress level
+ * and contextual analysis of the user's message.
  * Pure functional, zero side-effects.
  */
-export function generateDeEscalationResponse(tier: DistressLevel, _userText?: string): string {
+export function generateDeEscalationResponse(tier: DistressLevel, userText?: string): string {
+  const text = (userText || "").toLowerCase().trim();
+
+  // 1. Imminent crisis response
+  if (tier === "imminent_crisis") {
+    return "I hear how overwhelming this pain is, and I want you to stay safe with me right now. Please pause, take one gentle breath, and connect directly with emergency support. You are not alone and help is ready for you this very minute.";
+  }
+
+  // 2. Contextual greetings
+  if (/^(hi|hello|hey|salam|assalamu\s*alaikum|halo)\b/i.test(text) && text.length < 25) {
+    return "Hello. I'm really glad you reached out today. This is a quiet, judgment-free space where nothing is judged or saved. How is your heart and mind feeling in this moment?";
+  }
+
+  // 3. Loneliness / isolation / sadness
+  if (/\b(lonely|alone|crying|sad|tears|nobody|no\s*one)\b/i.test(text)) {
+    return "I hear how deep the loneliness feels right now. When you feel alone, every minute can feel so heavy. I am sitting right here with you in this quiet space. Can you tell me what feels like the hardest thing you're facing today?";
+  }
+
+  // 4. Anxiety / panic / racing thoughts
+  if (/\b(anxious|anxiety|panic|scared|afraid|racing|stress|stressed)\b/i.test(text)) {
+    return "I hear the anxiety and tension in your nervous system right now. When panic rises, our chest tightens and thoughts race. You are safe in this quiet moment. Let's do one slow, gentle exhale together. Can you feel your feet resting on the surface beneath you?";
+  }
+
+  // 5. Exhaustion / burnout / feeling overwhelmed
+  if (/\b(tired|exhausted|sleep|can'?t\s*sleep|heavy|burnout|drained)\b/i.test(text)) {
+    return "It sounds like you are carrying profound physical and emotional exhaustion. When you've been fighting for so long, your body simply runs out of energy. You don't have to solve anything right this second. Can we just pause together, drop your shoulders, and breathe?";
+  }
+
+  // 6. Direct calls for help or confusion
+  if (/\b(help|what\s*to\s*do|what\s*should\s*i\s*do|confused|lost)\b/i.test(text)) {
+    return "I am right here to walk through this with you step by step. We don't have to figure it all out at once. We can try a gentle breathing exercise together, talk through what's hurting, or connect you to human support. What feels like it would give you the most comfort right now?";
+  }
+
+  // 7. Tier-based progressive responses
   switch (tier) {
-    case "imminent_crisis":
-      return "I hear how much pain you are in right now, and I want you to be safe. Please pause, take one gentle breath, and reach out to the crisis lifeline right now. You are not alone, and there is support for you this very minute.";
     case "severe":
       return "I hear how heavy and exhausting everything feels right now, and I want to acknowledge your courage in reaching out. You don't have to carry this alone. Let's pause for just a moment. Can you feel the surface beneath you supporting you? Let's take a slow, gentle breath together. I'm right here listening.";
     case "moderate":
-      return "Thank you for sharing that with me. When emotions or anxiety feel intense, your body is doing its best to cope. Let's take this one step at a time. Try taking a slow inhale through your nose for 4 counts, holding gently for 4, and exhaling softly for 4. What is one thing you can see in the room around you right now?";
+      return "Thank you for sharing that with me. When emotions feel intense, your body is doing its best to cope. Let's take this one step at a time. Try taking a slow inhale through your nose for 4 counts, holding gently for 4, and exhaling softly for 4. What is one thing you can see in the room around you right now?";
     case "mild":
     default:
-      return "I'm here with you in this safe space. Whatever is on your mind, you can share it at your own pace. How are you feeling in your body right now?";
+      return "Thank you for being open with me. Whatever you are experiencing, your feelings make sense given what you've been carrying. Take all the time you need. What feels like the heaviest weight on your shoulders today?";
   }
 }
 

@@ -65,7 +65,7 @@ export function SanctuaryPanel({ initialTab = "chat", className }: SanctuaryPane
       <nav
         role="tablist"
         aria-label="Sanctuary Modules"
-        className="flex items-center justify-start sm:justify-center overflow-x-auto p-1.5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl backdrop-blur-md no-scrollbar gap-1.5"
+        className="flex items-center justify-start sm:justify-center overflow-x-auto p-1.5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl backdrop-blur-md [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden gap-1.5"
       >
         {SANCTUARY_TABS.map((tab) => {
           const Icon = tab.icon;
