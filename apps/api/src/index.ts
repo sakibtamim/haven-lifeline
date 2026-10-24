@@ -29,6 +29,22 @@ app.use(
   })
 );
 
+// Root information endpoint
+app.get("/", (c) => {
+  return c.json({
+    service: "Haven Crisis Low-Latency API",
+    version: "1.0.0",
+    status: "operational",
+    region: "Bangladesh (BD) & Global",
+    endpoints: {
+      health: "/health",
+      chat: "POST /api/chat",
+      sms: "POST /api/sms",
+    },
+    webSanctuary: "http://localhost:3000",
+  });
+});
+
 // Health probe endpoint
 app.get("/health", (c) => {
   return c.json({
